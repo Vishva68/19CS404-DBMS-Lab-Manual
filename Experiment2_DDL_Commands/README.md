@@ -105,99 +105,259 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
-
-```sql
--- Paste your SQL code below for Question 1
 ```
+ Create a table named Reviews with the following columns:
 
+ReviewID as INTEGER
+ProductID as INTEGER
+Rating as REAL
+ReviewText as TEXT
+For example:
+
+Test	Result
+pragma table_info('Reviews');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           ReviewID    INTEGER     0                       0
+1           ProductID   INTEGER     0                       0
+2           Rating      REAL        0                       0
+3           ReviewText  TEXT        0                       0
+
+```
+```
+sql
+   -- create table Reviews(
+ReviewID INTEGER ,
+ProductID INTEGER ,
+Rating REAL,
+ReviewText TEXT );
+
+```
 **Output:**
 
-![Output1](output.png)
+![Output1](output.png)![Screenshot 2025-04-28 142822](https://github.com/user-attachments/assets/86117941-340f-45b6-9822-64a254bc7784)
+
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+```
+ Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
 
-```sql
--- Paste your SQL code below for Question 2
+
+For example:
+
+Test	Result
+PRAGMA table_info(employee);
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          integer     0                       0
+1           salary      number      0                       0
+2           department  INTEGER     0                       0
+3           manager_id  INTEGER     0           NULL        0
+
+```
+```
+sql
+-- alter table employee
+add column department_id INTEGER ;
+alter table employee
+add column manager_id INTEGER default NULL ;
 ```
 
 **Output:**
+![Output2](output.png)![Screenshot 2025-04-28 142846](https://github.com/user-attachments/assets/1dd1f13b-09ae-4483-bc85-3a7636388498)
 
-![Output2](output.png)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+```
+-- Insert all students from Archived_students table into the Student_details table.
 
-```sql
--- Paste your SQL code below for Question 3
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           RollNo      INT           0                       1
+1           Name        VARCHAR(100)  0                       0
+2           Gender      VARCHAR(10)   0                       0
+3           Subject     VARCHAR(50)   0                       0
+4           MARKS       INT           0                       0
+For example:
+
+Test	Result
+select * from student_details;
+RollNo      Name           Gender      Subject     MARKS
+----------  -------------  ----------  ----------  ----------
+1           Alice Johnson  Female      Math        85
+2           Bob Smith      Male        Science     90
+3           Charlie Brown  Male        English     78
+
+```
+```
+sql
+-- insert into student_details(RollNo,Name,Gender,Subject,MARKS)
+select  RollNo,Name,Gender,Subject,MARKS from Archived_students ;
 ```
 
 **Output:**
+![Output3](output.png)![Screenshot 2025-04-28 142912](https://github.com/user-attachments/assets/d58ba2a9-4dae-4734-bdf5-6f30add039de)
 
-![Output3](output.png)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+```
+--Create a table named Products with the following constraints:
 
-```sql
--- Paste your SQL code below for Question 4
+ProductID should be the primary key.
+ProductName should be NOT NULL.
+Price is of real datatype and should be greater than 0.
+Stock is of integer datatype and should be greater than or equal to 0.
+For example:
+
+Test	Result
+INSERT INTO Products
+VALUES (1, NULL,0,5);
+Error: NOT NULL constraint failed: Products.ProductNa
+
+```
+```
+sql
+--create table Products(
+ProductID INTEGER primary key ,
+ProductName TEXT not null,
+Price REAL check(price>0),
+Stock INTEGER check(Stock>=0));
 ```
 
 **Output:**
-
-![Output4](output.png)
+![Output4](output.png)![Screenshot 2025-04-28 142932](https://github.com/user-attachments/assets/f7d01d8f-32f9-456a-b6b1-1785ab3aaa84)
 
 **Question 5**
 ---
--- Paste Question 5 here
+```
+-- Insert the below data into the Customers table, allowing the City and ZipCode columns to take their default values.
 
-```sql
--- Paste your SQL code below for Question 5
+CustomerID  Name          Address
+----------  ------------  ----------
+304         Peter Parker  Spider St      
+
+Note: The City and ZipCode columns will use their default values.
+ 
+For example:
+
+Test	Result
+SELECT CustomerID, Name, Address
+FROM Customers;
+CustomerID  Name          Address
+----------  ------------  ----------
+304         Peter Parker  Spider St
+
+```
+```
+sql
+-- insert into Customers (CustomerID,Name,Address)
+values ("304","Peter Parker","Spider St");
 ```
 
 **Output:**
 
-![Output5](output.png)
+![Output5](output.png)![Screenshot 2025-04-28 142955](https://github.com/user-attachments/assets/c88dadc5-2026-4b81-91c9-1ac635315afa)
+
 
 **Question 6**
----
--- Paste Question 6 here
+```
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
+For example:
 
-```sql
--- Paste your SQL code below for Question 6
+Test	Result
+INSERT INTO item VALUES("ITM5","Charlie Gold",700,"COM4");
+UPDATE company SET com_id='COM5' WHERE com_id='COM4';
+SELECT * FROM item;
+item_id     item_desc     rate        icom_id
+----------  ------------  ----------  ----------
+ITM5        Charlie Gold  700         COM5
+
+--
+```
+```
+sql
+-- create table item(
+item_id TEXT primary key,
+item_desc TEXT not null,
+rate INTEGER not null,
+icom_id TEXT(4),
+foreign key(icom_id)references company(com_id)
+on update cascade
+on delete cascade);
 ```
 
 **Output:**
 
-![Output6](output.png)
+![Output6](output.png)![Screenshot 2025-04-28 143013](https://github.com/user-attachments/assets/ce6f85cd-bc80-4f13-92d0-4ccb2d92f8a8)
+
 
 **Question 7**
----
--- Paste Question 7 here
+```
+---Insert all products from Discontinued_products into Products.
 
-```sql
--- Paste your SQL code below for Question 7
+Table attributes are ProductID, ProductName, Price, Stock
+
+For example:
+
+Test	Result
+select * from Products;
+ProductID   ProductName     Price       Stock
+----------  --------------  ----------  ----------
+101         Old Smartphone  199.99      0
+102         Vintage Laptop  399.99      10
+103         Classic Tablet  149.99      5
+-- 
+
+```
+```
+sql
+-- INSERT into products( ProductID,ProductName,Price,Stock)
+SELECT  ProductID,ProductName,Price,Stock FROM Discontinued_products 
 ```
 
 **Output:**
 
-![Output7](output.png)
+![Output7](output.png)![Screenshot 2025-04-28 143051](https://github.com/user-attachments/assets/fc8077e8-6521-4194-83db-f991b709fee9)
+
 
 **Question 8**
----
--- Paste Question 8 here
+```
+---Insert a record with EmployeeID 001, Name Sarah Parker, Position Manager, Department HR, and Salary 60000 into the Employee table.
 
-```sql
--- Paste your SQL code below for Question 8
+For example:
+
+Test	Result
+SELECT * FROM Employee WHERE EmployeeID = 001;
+EmployeeID  Name          Position    Department  Salary
+----------  ------------  ----------  ----------  ----------
+1           Sarah Parker  Manager     HR          60000
+
+--
+
+```
+```
+sql
+-- INSERT into employee(EmployeeID,Name,Position,Department,Salary) 
+values("1","Sarah Parker","Manager","HR","60000")
 ```
 
 **Output:**
 
-![Output8](output.png)
+![Output8](output.png)![Screenshot 2025-04-28 143107](https://github.com/user-attachments/assets/ac55728e-2e43-49c1-a923-33fddc489888)
+
 
 **Question 9**
 ---
