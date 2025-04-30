@@ -1,11 +1,12 @@
-# ER Diagram Submission - R.Akshaya
+# ER Diagram Submission - Vishvanandh N
 
 ## Scenario Chosen:
 University
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
-![image](https://github.com/user-attachments/assets/dde8e2a5-650e-4c33-b5ce-6d8939a7aa43)
+![ER Diagram](er_diagram.png)![Screenshot 2025-04-30 114813](https://github.com/user-attachments/assets/54595469-66d3-4d25-80d3-cf9d0e5fa6d9)
+
+
 
 
 ## Entities and Attributes:
