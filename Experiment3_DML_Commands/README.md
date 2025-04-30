@@ -47,7 +47,7 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
--- Paste Question 1 here
+-- 
 
 ```sql
 -- Paste your SQL code below for Question 1
