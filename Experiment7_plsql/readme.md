@@ -1,6 +1,6 @@
 # Experiment 7: PL/SQL – Variables, Control Structures and Loops
 ## Name: Reddineni Adarsh Chowdary
-## Reg.n0: 212223040166
+## Reg.n0: 212224240186
 ## AIM
 To write and execute simple PL/SQL programs using variables, loops, and conditional statements.
 
